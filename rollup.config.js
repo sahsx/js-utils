@@ -10,5 +10,14 @@ export default {
     format: 'umd'
   },
   external: [/@babel\/runtime/],
-  plugins: [commonjs(), nodeResolve(), typescript({ target: 'es5' }), babel({ babelHelpers: 'runtime', exclude: ['node_modules'], extensions: ['.ts', '.tsx'] })]
+  plugins: [
+    commonjs(),
+    nodeResolve(),
+    typescript({ target: 'es5' }),
+    babel({
+      babelHelpers: 'runtime',
+      exclude: ['node_modules'],
+      extensions: ['.ts', '.tsx']
+    })
+  ]
 }

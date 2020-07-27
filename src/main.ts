@@ -2,7 +2,7 @@ const a:Number = 1
 console.log(a)
 
 class Animal {
-    name
+    name:String
     constructor () {
       this.name = 'animal'
     }
