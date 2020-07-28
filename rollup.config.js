@@ -7,7 +7,7 @@ import { uglify } from 'rollup-plugin-uglify'
 let plugins = [
   commonjs(),
   nodeResolve(),
-  typescript({ target: 'es5' }),
+  typescript(),
   babel({
     babelHelpers: 'runtime',
     exclude: ['node_modules'],

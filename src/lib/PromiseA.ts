@@ -1,14 +1,14 @@
 export class PromiseA {
-  _status: string = 'pending'
-  _val: any
-  _err: any
-  _callbacks: callback[] = []
+  private _status: string = 'pending'
+  private _val: any
+  private _err: any
+  private _callbacks: callback[] = []
 
   constructor (cb: Function) {
     cb(this._resolve.bind(this), this._reject.bind(this))
   }
 
-  _resolve (val: any) {
+  private _resolve (val: any) {
     if (this._status === 'pending') {
       this._status = 'fulfilled'
       this._val = val
@@ -20,7 +20,7 @@ export class PromiseA {
     }
   }
 
-  _reject (err: any) {
+  private _reject (err: any) {
     if (this._status === 'pending') {
       this._status = 'rejected'
       this._err = err
@@ -32,7 +32,7 @@ export class PromiseA {
     }
   }
 
-  _handle (cb: callback): void {
+  private _handle (cb: callback): void {
     const { onfulFilled, onRejected, resolve, reject } = cb
     switch (this._status) {
       case 'fulfilled': {
@@ -57,13 +57,13 @@ export class PromiseA {
     }
   }
 
-  then (onfulFilled: Function, onRejected?: Function): PromiseA {
+  public then (onfulFilled: Function, onRejected?: Function): PromiseA {
     return new PromiseA((resolve: Function, reject: Function) => {
       this._handle({ onfulFilled, onRejected, resolve, reject } as callback)
     })
   }
 
-  catch (onRejected: Function): PromiseA {
+  public catch (onRejected: Function): PromiseA {
     return new PromiseA((resolve: Function, reject: Function) => {
       this._handle({ onfulfilled: undefined, onRejected, resolve, reject } as callback)
     })
