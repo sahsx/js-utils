@@ -1,6 +1,6 @@
 /* eslint-disable no-proto */
 export function CreateObj (prototype: object): object {
-  const F = class { }
+  const F = class {}
   F.prototype = prototype
   return new F()
 }
@@ -41,12 +41,12 @@ export function call (context: any, fn: Function) {
 
 export function debounce (this: any, fn: Function, time: number) {
   let clock: any = null
-  return () => {
+  return (...args: any[]) => {
     if (clock) {
       clearTimeout(clock)
     }
     clock = setTimeout(() => {
-      fn.apply(this)
+      fn.apply(this, ...args)
       clearTimeout(clock)
     }, time)
   }

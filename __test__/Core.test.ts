@@ -1,4 +1,3 @@
-import { doesNotMatch } from 'assert'
 import { apply, call, instanceOf, debounce } from '../src/lib/Core'
 
 test('apply function', () => {
@@ -32,7 +31,7 @@ test('debounce func', (done) => {
   let num = 1
   const interval = setInterval(() => {
     num++
-    if (num === 6) clearInterval(interval)
+    if (num === 3) clearInterval(interval)
     fn()
   }, 500)
   setTimeout(() => {
