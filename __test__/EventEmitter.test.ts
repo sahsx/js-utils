@@ -1,5 +1,4 @@
 import { EventEmitter } from '../src/lib/EventEmitter'
-import { emit } from 'process'
 
 test('eventEmitter test', (done) => {
   const emitter = new EventEmitter()
